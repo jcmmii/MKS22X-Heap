@@ -17,7 +17,7 @@ public class MyHeap {
           data[index] = temp;
           pushDown(data,size,2*index+1);
         }
-      } else if (data[2*index+1] < data[2*index+2]){ // left child < right child
+      } else if (data[2*index+1] <= data[2*index+2]){ // left child <= right child
           if (data[index] < data[2*index+2]) {   //if current index < right child, swaps
             temp = data[2*index+2];
             data[2*index+2] = data[index];
@@ -28,8 +28,16 @@ public class MyHeap {
       }
     }
 
-  private static void pushUp(int[]data,int index) {
-
+  private static void pushUp(int[]data, int index) {
+    int temp;
+    int i = (index-1)/2;
+    if (i == 0) return;
+    if (data[i] < data[index]) {
+      temp = data[i];
+      data[i] = data[index];
+      data[index] = temp;
+      pushUp(data,i);
+    }
   }
 
 //public static void heapify(int[]) {
