@@ -40,10 +40,17 @@ public class MyHeap {
     }
   }
 
-//public static void heapify(int[]) {
-
+  public static void heapify(int[] data) {
+    for (int i = 0; i < data.length; i++) {
+      pushUp(data,i);
+    }
   }
 
-//  public static void heapsort(int[]) {
+  public static void heapsort(int[] data) {
+    heapify(data);
+    for (int i = data.length - 1; i > 0; i++) {
+      
+    }
+
 
   }
