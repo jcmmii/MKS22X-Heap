@@ -1,15 +1,17 @@
+import java.util.*;
+
 public class MyHeap {
   private static void pushDown(int[]data, int size, int index) {
     int temp;
     if (index * 2 + 1 >= size) return; //base case when index is greater than size
-    if (index * 2 + 1 = size - 1) { //when one child, at the end
+    if (index * 2 + 1 == size - 1) { //when one child, at the end
       if (data[index] < data[index*2 + 1]) { //if child is greater
         temp = data[index*2+1];
         data[2*index+1] = data[index];
         data[index] = temp;
       }
     }
-    if (index * 2 + 1 != size - 1) {  //not at the end
+   if (index * 2 + 1 != size - 1) {  //not at the end
       if (data[2*index+1] > data[2*index+2]) { //left child > right child
         if (data[index] < data[2*index+1]) {   //if current index < left child, swaps
           temp = data[2*index+1];
@@ -48,9 +50,13 @@ public class MyHeap {
 
   public static void heapsort(int[] data) {
     heapify(data);
-    for (int i = data.length - 1; i > 0; i++) {
-      
+    int temp;
+    for (int i = data.length; i > 0; i--) {
+      pushDown(data,i,0);
+      temp = data[0];
+      data[0] = data[i-1];
+      data[i-1] = temp;
     }
-
+  }
 
   }
